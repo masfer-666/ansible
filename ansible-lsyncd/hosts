@@ -1,0 +1,10 @@
+[server]
+srv01 ansible_host=192.168.200.100
+srv02 ansible_host=192.168.200.101
+
+[all:vars]
+ansible_connection=ssh
+ansible_user=root
+#ansible_user=ubuntu
+ansible_ssh_pass=ubuntu123
+

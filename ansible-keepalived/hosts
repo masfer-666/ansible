@@ -1,0 +1,8 @@
+[keepalived]
+master ansible_host=10.20.20.74
+backup ansible_host=10.20.20.75
+
+[all:vars]
+ansible_connection=ssh
+ansible_user=root
+ansible_ssh_pass=d3xip;21

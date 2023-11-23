@@ -1,0 +1,1 @@
+mount -t nfs -o port=2049 192.168.200.31:/cephfs /mnt/cephfs -vvvv

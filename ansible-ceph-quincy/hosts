@@ -1,0 +1,11 @@
+[mon]
+Mon01 ansible_host=10.2.16.156
+Mon02 ansible_host=10.2.16.157
+Mon03 ansible_host=10.2.16.158
+
+[all:vars]
+ansible_connection=ssh
+ansible_user=root
+ansible_ssh_pass=R3dB0x2023** 
+ansible_become_password= R3dB0x2023**
+

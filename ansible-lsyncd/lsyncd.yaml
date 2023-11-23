@@ -1,0 +1,41 @@
+---
+- name: Install and configure lsyncd
+  hosts: all
+  become: true
+  become_user: root 
+  vars:
+    ansible_become_pass: "ubuntu123"
+
+  tasks:
+    - name: Install lsyncd
+      ansible.builtin.package:
+        name: lsyncd
+        state: present
+    
+    - name: Create Folder Lsyncd conf 
+      ansible.builtin.file:
+        path: /etc/lsyncd
+        state: directory
+    
+    - name: Create Folder Lsyncd log
+      ansible.builtin.file:
+        path: /var/log/lsyncd/
+        state: directory
+    
+    - name: Create File exclude for lsyncd
+      ansible.builtin.template:
+        src: lsyncd.exclude
+        dest: /etc/lsyncd/lsyncd.exclude
+
+    - name: Create lsyncd configuration file
+      ansible.builtin.template:
+        src: lsyncd.conf
+        dest: /etc/lsyncd/lsyncd.conf.lua
+      notify: restart lsyncd
+
+  handlers:
+    - name: restart lsyncd
+      ansible.builtin.service:
+        name: lsyncd
+        state: restarted
+...
